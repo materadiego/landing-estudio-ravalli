@@ -20,6 +20,28 @@
 .site-nav a { display: inline-flex; align-items: center; min-height: var(--tap); color: var(--paper); font-size: var(--fs-sm); text-decoration: none; }
 .site-nav a:hover { text-decoration: underline; text-underline-offset: .3em; }
 .site-nav__contact { gap: var(--s-5); }
+.nav-toggle { display: none; }
+.nav-toggle__icon { display: grid; gap: 5px; width: 22px; }
+.nav-toggle__icon > span { display: block; width: 22px; height: 2px; background: currentColor; border-radius: 1px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon > span:first-child { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon > span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon > span:last-child { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 1023px) {
+  .site-header__inner { gap: var(--s-4); }
+  .site-header .site-brand { min-width: 0; max-width: calc(100% - 64px); }
+  .site-header .brand-logo { width: min(216px, 100%); height: 44px; }
+  .site-header--menu-ready .nav-toggle { display: inline-flex; flex: none; width: 48px; height: 48px; padding: 12px; margin-left: auto; color: var(--paper); border-color: var(--fg-muted); }
+  .site-header--menu-ready .nav-toggle:hover { background: var(--ink-800); }
+  .nav-toggle[hidden] { display: none; }
+  .site-nav { flex-basis: 100%; flex-direction: column; align-items: stretch; gap: 0; padding-top: var(--s-3); border-top: 1px solid var(--rule); }
+  .site-nav a { min-height: 52px; padding: var(--s-3) var(--s-2); border-bottom: 1px solid var(--rule); }
+  .site-nav a:last-child { border-bottom: 0; }
+  .site-header--menu-ready .site-nav:not(.is-open) { display: none; }
+}
+@media print {
+  .nav-toggle, .site-header--menu-ready .nav-toggle { display: none; }
+  .site-header .site-nav { display: none; }
+}
 
 
 .hero { padding-block: clamp(40px, 5vw, 64px) clamp(48px, 6vw, 80px); }
@@ -145,7 +167,6 @@
 .error__codigo { font: 500 var(--fs-display)/1 var(--font-display); color: var(--brand-300); margin-bottom: var(--s-6); }
 
 @media (max-width: 639px) {
-  .site-nav { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); width: 100%; column-gap: var(--s-4); }
   .site-nav a { font-size: .875rem; }
   .hero__cta, .contacto__vias { align-items: stretch; flex-direction: column; }
   .hero__cta .btn, .contacto__vias .btn { width: 100%; }

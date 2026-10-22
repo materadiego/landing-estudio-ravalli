@@ -28,3 +28,6 @@
 !/assets/img/institucional.jpg
 !/assets/img/logo-estudio-ravalli-blanco.png
 !/assets/img/logo-estudio-ravalli-negro.png
+!/assets/js/
+/assets/js/*
+!/assets/js/main.js
